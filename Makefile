@@ -1,3 +1,5 @@
+default: build
+
 csvfltr: csvfltr.cpp
 	g++ -o csvfltr csvfltr.cpp
 
@@ -11,8 +13,6 @@ csvstrpr: csvstrpr.cpp
 	g++ -o csvstrpr csvstrpr.cpp
 
 build: csvfltr csvmtrx csvstr csvstrpr
-
-default: build
 
 clean:
 	rm -f ./csvfltr
