@@ -3,8 +3,8 @@ default: build
 csvfltr: csvfltr.cpp common.o
 	g++ -o csvfltr common.o csvfltr.cpp
 
-csvmtrx: csvmtrx.cpp
-	g++ -o csvmtrx csvmtrx.cpp
+csvmtrx: csvmtrx.cpp common.o
+	g++ -o csvmtrx common.o csvmtrx.cpp
 
 csvstr: csvstr.cpp
 	g++ -o csvstr csvstr.cpp

@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 
+#define EXIT_CODE 0
 #define EMPTY_STRING ""
 
 bool areEqual(const std::string&, const std::string&);
