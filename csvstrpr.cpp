@@ -2,25 +2,24 @@
 #include <vector>
 #include <string>
 
-#define EXIT_CODE 0
+#include "common.h"
 
 using namespace std;
 
 void printusage();
-vector<string>* splitstr(const string&, const char&);
 vector<int>* getheaderindx(const string&, const string&);
 
 int main(int argc, char** argv){
     bool indexflag = false;
     bool includelogic = false;
-    string headercsv = "";
+    string headercsv = EMPTY_STRING;
     
     // Process args
     for(int i = 1; i < argc; i++){
         string arg = string(argv[i]);
-        if(arg.compare("--index") == 0){
+        if(areEqual(arg, "--index")){
             indexflag = true;
-        } else if (arg.compare("--include") == 0){
+        } else if (areEqual(arg, "--include")){
             includelogic = true;
         } else {
             headercsv += arg;
@@ -28,7 +27,7 @@ int main(int argc, char** argv){
     }
 
     // make sure headers were specified otherwise this is just stupid
-    if(headercsv.compare("") == 0){
+    if(areEqual(headercsv, "")){
         printusage();
         return EXIT_CODE;
     }
@@ -59,7 +58,6 @@ int main(int argc, char** argv){
         vector<string> toprint;
         if(includelogic){
             for(int i = 0; i < ivec->size(); i++){
-                //cout << ctokens->at(ivec->at(i)) << (i+1 < ivec->size() ? "," : "\n" );
                 toprint.push_back(ctokens->at(ivec->at(i)));
             }
         } else {
@@ -69,12 +67,9 @@ int main(int argc, char** argv){
                 for(int j = 0; j < ivec->size(); j++){
                     if(i == ivec->at(j)){
                         match = true;
-                        //continue;
                         break;
                     }
-                   // toprint.push_back(ctokens->at(i));
                 }
-                //toprint.push_back(ctokens->at(i));
                 if(!match){
                     toprint.push_back(ctokens->at(i));
                 } else {
@@ -104,28 +99,9 @@ void printusage(){
     cout << "csvstrpr [FLAGS] [HEADERS]" << endl << endl;
     cout << "Flags:" << endl;
     cout << "--index   : Specified headers are column numbers instead of header strings" << endl;
-    //cout << "--omit    : *DEFAULT* - Omit specified headers from output" << endl;
     cout << "--include : Include only the specified headers in output" << endl;
     cout << endl;
     cout << "Headers must be provided as a string of comma separated values" << endl;
-}
-
-vector<string>* splitstr(const string& line, const char& delim){
-    vector<string>* tokens = new vector<string>();
-    string buffer = "";
-    for(int i = 0; i < line.size(); i++){
-        if(line.at(i) == delim){
-            tokens->push_back(buffer);
-            buffer = "";
-        } else {
-            buffer += line.at(i);
-        }
-    }
-    if(buffer.compare("") != 0){
-        tokens->push_back(buffer);
-    }
-
-    return tokens;
 }
 
 vector<int>* getheaderindx(const string& userline, const string& headersline){
@@ -137,9 +113,8 @@ vector<int>* getheaderindx(const string& userline, const string& headersline){
     vector<string>* columns = splitstr(userline, ',');
 
     for(int i = 0; i < columns->size(); i++){
-        // cerr << "working on " << columns->at(i) << endl;
         for(int j = 0; j < headers->size(); j++){
-            if(columns->at(i).compare(headers->at(j)) == 0){
+            if(areEqual(columns->at(i), headers->at(j))){
                 hindx->push_back(j);
                 break;
             }
@@ -150,7 +125,5 @@ vector<int>* getheaderindx(const string& userline, const string& headersline){
     delete columns;
    
     return hindx;
-    
-    //cerr << "not implemented.. dis gonna fail foo.." << endl;
-    //return nullptr;
 }
+

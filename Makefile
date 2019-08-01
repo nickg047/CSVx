@@ -9,8 +9,8 @@ csvmtrx: csvmtrx.cpp common.o
 csvstr: csvstr.cpp common.o
 	g++ -o csvstr common.o csvstr.cpp
 
-csvstrpr: csvstrpr.cpp
-	g++ -o csvstrpr csvstrpr.cpp
+csvstrpr: csvstrpr.cpp common.o
+	g++ -o csvstrpr common.o csvstrpr.cpp
 
 common.o: common.cpp
 	g++ -c common.cpp
