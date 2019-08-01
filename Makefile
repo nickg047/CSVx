@@ -1,7 +1,7 @@
 default: build
 
-csvfltr: csvfltr.cpp
-	g++ -o csvfltr csvfltr.cpp
+csvfltr: csvfltr.cpp common.o
+	g++ -o csvfltr common.o csvfltr.cpp
 
 csvmtrx: csvmtrx.cpp
 	g++ -o csvmtrx csvmtrx.cpp

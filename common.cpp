@@ -21,3 +21,11 @@ std::vector<std::string>* splitstr(const std::string& line, const char& delim){
 
     return tokens;
 }
+
+bool areEqual(const std::string& one, const std::string& two){
+    return one.compare(two) == 0;
+}
+
+bool isEmptyStr(const std::string& str){
+    return areEqual(str, EMPTY_STRING);
+}
