@@ -12,6 +12,9 @@ csvstr: csvstr.cpp
 csvstrpr: csvstrpr.cpp
 	g++ -o csvstrpr csvstrpr.cpp
 
+common.o: common.cpp
+	g++ -c common.cpp
+
 build: csvfltr csvmtrx csvstr csvstrpr
 
 clean:
@@ -19,6 +22,7 @@ clean:
 	rm -f ./csvmtrx
 	rm -f ./csvstr
 	rm -f ./csvstrpr
+	rm -f ./common.o
 
 install:
 	cp ./csvfltr /usr/local/bin/csvfltr
