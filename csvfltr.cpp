@@ -23,9 +23,9 @@ int main(int argc, char** argv){
                 searchHeaders = splitstr(string(argv[++i]), ',');
             } else {
                 printUsage();
-                return 0;
+                return EXIT_CODE;
             }
-        } else if (current.compare("-v") == 0){
+        } else if (areEqual(current, "-v")){
             if(i+1 < argc){
                 searchValues = splitstr(string(argv[++i]), ',');
             } else {
@@ -34,13 +34,13 @@ int main(int argc, char** argv){
             }
         } else if (areEqual(current, "-help")){
             printUsage();
-            return 0;
+            return EXIT_CODE;
         }
     }
 
     if(searchHeaders == nullptr || searchValues == nullptr){
         printUsage();
-        return 0;
+        return EXIT_CODE;
     }
 
     // get input from stdin and run filter
@@ -143,7 +143,7 @@ int main(int argc, char** argv){
     }
 
     // exit code
-    return 0;
+    return EXIT_CODE;
 }
 
 void printUsage(){

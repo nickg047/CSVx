@@ -87,7 +87,7 @@ int main(int argc, char** argv){
         delete [] metrics;
     }
     
-    return 0;
+    return EXIT_CODE;
 }
 
 pair<string, int>* findvecpair(const string& key, vector<pair<string, int>*>* vec){
