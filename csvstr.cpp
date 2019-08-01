@@ -7,17 +7,11 @@
 using namespace std;
 
 int main(){
-    vector<string> lines;
     string currentline;
         
-    while (getline(cin, currentline)){
-        lines.push_back(currentline);
-    }
-    
-    // tokenize line by line
-    for(auto it = lines.begin(); it != lines.end(); it++){
-        vector<string>* tokens = splitstr(*it, ',');
-
+    while (getline(cin, currentline)){     
+        vector<string>* tokens = splitstr(currentline, ',');
+        
         // insert quote
         for(auto it2 = tokens->begin(); it2 != tokens->end(); it2++){
             // print to stdout
@@ -25,10 +19,9 @@ int main(){
         }
         cout << endl;
 
-        // free memory
         delete tokens;
     }
-
-    return 0;
+    
+    return EXIT_CODE;
 }
 
