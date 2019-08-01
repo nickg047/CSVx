@@ -1,16 +1,19 @@
 default: build
 
-csvfltr: csvfltr.cpp
-	g++ -o csvfltr csvfltr.cpp
+csvfltr: csvfltr.cpp common.o
+	g++ -o csvfltr common.o csvfltr.cpp
 
-csvmtrx: csvmtrx.cpp
-	g++ -o csvmtrx csvmtrx.cpp
+csvmtrx: csvmtrx.cpp common.o
+	g++ -o csvmtrx common.o csvmtrx.cpp
 
-csvstr: csvstr.cpp
-	g++ -o csvstr csvstr.cpp
+csvstr: csvstr.cpp common.o
+	g++ -o csvstr common.o csvstr.cpp
 
-csvstrpr: csvstrpr.cpp
-	g++ -o csvstrpr csvstrpr.cpp
+csvstrpr: csvstrpr.cpp common.o
+	g++ -o csvstrpr common.o csvstrpr.cpp
+
+common.o: common.cpp
+	g++ -c common.cpp
 
 build: csvfltr csvmtrx csvstr csvstrpr
 
@@ -19,6 +22,7 @@ clean:
 	rm -f ./csvmtrx
 	rm -f ./csvstr
 	rm -f ./csvstrpr
+	rm -f ./common.o
 
 install:
 	cp ./csvfltr /usr/local/bin/csvfltr
@@ -31,3 +35,4 @@ uninstall:
 	rm -f /usr/local/bin/csvmtrx
 	rm -f /usr/local/bin/csvstr
 	rm -f /usr/local/bin/csvstrpr
+

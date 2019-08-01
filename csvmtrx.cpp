@@ -1,20 +1,17 @@
 #include <iostream>
-//#include <algorithm>
 #include <string>
 #include <vector>
 
-#define EXIT_CODE 0
+#include "common.h"
 
 using namespace std;
 
-vector<string>* splitstr(const string&, const char&);
 pair<string, int>* findvecpair(const string&, vector<pair<string, int>*>*);
 
 int main(int argc, char** argv){
     vector<string> headers;
     vector<pair<string, int>*>** metrics = nullptr;
-    //metrics = new vector<pair<string, int>*>* [headers.size()];
-    string cline = "";
+    string cline = EMPTY_STRING;
     int longest = 0; // track the deepest vector for padding output
     bool first = true;
     while(getline(cin, cline)){
@@ -39,10 +36,6 @@ int main(int argc, char** argv){
                     }
                 }
                 
-                //string insert = linetoks->at(i);
-                //insert.erase(std::remove(insert.begin(), insert.end(), '\n'), insert.end());
-                //insert.erase(std::remove(insert.begin(), insert.end(), '\r'), insert.end());
-                //current->first = insert;
                 current->first = linetoks->at(i);
                 current->second++;
             }
@@ -64,7 +57,7 @@ int main(int argc, char** argv){
             if(metrics[j] != nullptr){
                 if(i < metrics[j]->size() && metrics[j]->at(i) != nullptr){
                     cout << metrics[j]->at(i)->first << ",";
-                    cout << metrics[j]->at(i)->second << (j+1 < headers.size() ? "," : "");
+                    cout << metrics[j]->at(i)->second << (j+1 < headers.size() ? "," : EMPTY_STRING);
                 } else {
                     cout << (j+1 < headers.size() ? ",," : ",");
                 }
@@ -94,31 +87,7 @@ int main(int argc, char** argv){
         delete [] metrics;
     }
     
-    return 0;
-}
-
-// split a string by a user specified delimiter
-vector<string>* splitstr(const string& line, const char& delim){
-    vector<string>* tokens = nullptr;
-    if(line.length() > 0){
-        tokens = new vector<string>();
-    }
-    
-    string buffer = "";
-    for(int i = 0; i < line.length(); i++){
-        if(line.at(i) == delim){
-            tokens->push_back(buffer);
-            buffer = "";
-        } else {
-            buffer += line.at(i);
-        }
-    }
-
-    if(buffer.compare("") != 0){
-        tokens->push_back(buffer);
-    }
-    
-    return tokens;
+    return EXIT_CODE;
 }
 
 pair<string, int>* findvecpair(const string& key, vector<pair<string, int>*>* vec){
@@ -126,7 +95,7 @@ pair<string, int>* findvecpair(const string& key, vector<pair<string, int>*>* ve
     if(vec != nullptr){
         for(int i = 0; i < vec->size(); i++){
             if(vec->at(i) != nullptr){
-                if(vec->at(i)->first.compare(key) == 0){
+                if(areEqual(vec->at(i)->first, key)){
                     result = vec->at(i);
                     break;
                 }
