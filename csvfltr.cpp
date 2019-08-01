@@ -30,7 +30,7 @@ int main(int argc, char** argv){
                 searchValues = splitstr(string(argv[++i]), ',');
             } else {
                 searchValues = new vector<string>();
-                searchValues->push_back("");
+                searchValues->push_back(EMPTY_STRING);
             }
         } else if (areEqual(current, "-help")){
             printUsage();
@@ -45,7 +45,7 @@ int main(int argc, char** argv){
 
     // get input from stdin and run filter
     bool first = true;
-    string currentline = "";
+    string currentline = EMPTY_STRING;
     while(getline(cin, currentline)){
         if(first){
             first = false;
@@ -57,7 +57,7 @@ int main(int argc, char** argv){
 
             for(int i = 0; i < searchHeaders->size(); i++){
                 for(int j = 0; j < csvHeaders->size(); j++){
-                    if((*searchHeaders)[i].compare((*csvHeaders)[j]) == 0){
+                    if(areEqual( (*searchHeaders)[i] , (*csvHeaders)[j] )){    
                         pair<int, string>* newPair = new pair<int, string>();
                         newPair->first = j;
                         newPair->second = (*searchValues)[i];

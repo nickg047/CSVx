@@ -3,18 +3,18 @@
 std::vector<std::string>* splitstr(const std::string& line, const char& delim){
     std::vector<std::string>* tokens = new std::vector<std::string>();
 
-    std::string buffer = "";
+    std::string buffer = EMPTY_STRING;
 
     for(int i = 0; i < line.length(); i++){
         if(line.at(i) == delim){
             tokens->push_back(buffer);
-            buffer = "";
+            buffer = EMPTY_STRING;
         } else {
             buffer += line.at(i);
         }
     }
 
-    if(buffer.compare("") != 0){
+    if(!isEmptyStr(buffer)){
         tokens->push_back(buffer);
     }
 

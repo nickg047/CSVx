@@ -6,8 +6,8 @@
 
 #define EMPTY_STRING ""
 
-std::vector<std::string>* splitstr(const std::string&, const char&);
 bool areEqual(const std::string&, const std::string&);
 bool isEmptyStr(const std::string&);
+std::vector<std::string>* splitstr(const std::string&, const char&);
 
 #endif
