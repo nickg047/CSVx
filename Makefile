@@ -6,8 +6,8 @@ csvfltr: csvfltr.cpp common.o
 csvmtrx: csvmtrx.cpp common.o
 	g++ -o csvmtrx common.o csvmtrx.cpp
 
-csvstr: csvstr.cpp
-	g++ -o csvstr csvstr.cpp
+csvstr: csvstr.cpp common.o
+	g++ -o csvstr common.o csvstr.cpp
 
 csvstrpr: csvstrpr.cpp
 	g++ -o csvstrpr csvstrpr.cpp
@@ -35,3 +35,4 @@ uninstall:
 	rm -f /usr/local/bin/csvmtrx
 	rm -f /usr/local/bin/csvstr
 	rm -f /usr/local/bin/csvstrpr
+
