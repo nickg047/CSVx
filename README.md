@@ -1,5 +1,7 @@
 # CSVx
-CSV Transformation Tools
+CSV Transformation Tools  
+By Nick G  
+nickg047@sdf.org  
 
 ## Description
 Tools and utilities for on-the-fly csv transformation, formatting and metric calculations.
