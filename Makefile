@@ -1,19 +1,22 @@
+CC = g++
+CFLAGS = -std=c++11
+
 default: build
 
 csvfltr: csvfltr.cpp common.o
-	g++ -o csvfltr common.o csvfltr.cpp
+	$(CC) $(CFLAGS) -o csvfltr common.o csvfltr.cpp
 
 csvmtrx: csvmtrx.cpp common.o
-	g++ -o csvmtrx common.o csvmtrx.cpp
+	$(CC) $(CFLAGS) -o csvmtrx common.o csvmtrx.cpp
 
 csvstr: csvstr.cpp common.o
-	g++ -o csvstr common.o csvstr.cpp
+	$(CC) $(CFLAGS) -o csvstr common.o csvstr.cpp
 
 csvstrpr: csvstrpr.cpp common.o
-	g++ -o csvstrpr common.o csvstrpr.cpp
+	$(CC) $(CFLAGS) -o csvstrpr common.o csvstrpr.cpp
 
 common.o: common.cpp
-	g++ -c common.cpp
+	$(CC) $(CFLAGS) -c common.cpp
 
 build: csvfltr csvmtrx csvstr csvstrpr
 
