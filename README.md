@@ -1,5 +1,7 @@
 # CSVx
-CSV Transformation Tools
+CSV Transformation Tools  
+By Nick G  
+nickg047@sdf.org  
 
 ## Description
 Tools and utilities for on-the-fly csv transformation, formatting and metric calculations.
@@ -12,13 +14,42 @@ To compile and install all the tools simply type:
 ## Usage
 
 ### CSV FILTER
-TODO
+`csvfltr -h [HEADERS] -v [VALUES]`	
+	
+Headers and Values must be entered in respective order and are comma separated	
+	
+Values can either be string literals or commands such as:	
+        '/<0'             - Negative Value	
+        '/>0'             - Positive Value	
+        '/0'              - Empty String	
+        '/c[STRING]'      - Contained String	
+		
+csvfltr will then listen for input from stdin	
 
 ### CSV METRICS
-TODO
+Calculates occurance metrics in a CSV matrix	
+
+`csvmtrx`	
+
+csvmtrx will then listen for input from stdin	
 
 ### CSV STRING
-TODO
+Stringifies CSV values for proper display in applications like MS Excel	
+
+`csvstr`	
+
+csvstr will then listen for input from stdin	
 
 ### CSV STRIPPER
-TODO
+Removes columns from csv output	
+
+Usage:	
+`csvstrpr [FLAGS] [HEADERS]`	
+
+Flags:	
+--index   : Specified headers are column numbers instead of header strings	
+--include : Include only the specified headers in output	
+
+Headers must be provided as a string of comma separated values	
+
+csvstrpr will then listen for input from stdin	

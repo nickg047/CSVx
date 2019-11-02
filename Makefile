@@ -1,33 +1,40 @@
+CC = g++
+CFLAGS = -std=c++11
+
 default: build
 
 csvfltr: csvfltr.cpp common.o
-	g++ -o csvfltr common.o csvfltr.cpp
+	$(CC) $(CFLAGS) -o csvfltr common.o csvfltr.cpp
 
 csvmtrx: csvmtrx.cpp common.o
-	g++ -o csvmtrx common.o csvmtrx.cpp
+	$(CC) $(CFLAGS) -o csvmtrx common.o csvmtrx.cpp
 
 csvstr: csvstr.cpp common.o
-	g++ -o csvstr common.o csvstr.cpp
+	$(CC) $(CFLAGS) -o csvstr common.o csvstr.cpp
 
 csvstrpr: csvstrpr.cpp common.o
-	g++ -o csvstrpr common.o csvstrpr.cpp
+	$(CC) $(CFLAGS) -o csvstrpr common.o csvstrpr.cpp
+
+rowstrpr: rowstrpr.cpp common.o
+	$(CC) $(CFLAGS) -o rowstrpr common.o rowstrpr.cpp
 
 csvprinter: csvprinter.cpp common.o matrix.o
-	g++ -o csvprinter common.o matrix.o csvprinter.cpp
+	$(CC) $(CFLAGS) -o csvprinter common.o matrix.o csvprinter.cpp
 
 matrix.o: matrix.cpp
-	g++ -c matrix.cpp
+	$(CC) $(CFLAGS) -c matrix.cpp
 
 common.o: common.cpp
-	g++ -c common.cpp
+	$(CC) $(CFLAGS) -c common.cpp
 
-build: csvfltr csvmtrx csvstr csvstrpr csvprinter
+build: csvfltr csvmtrx csvstr csvstrpr csvprinter rowstrpr
 
 clean:
 	rm -f ./csvfltr
 	rm -f ./csvmtrx
 	rm -f ./csvstr
 	rm -f ./csvstrpr
+	rm -f ./rowstrpr
 	rm -f ./common.o
 	rm -f ./matrix.o
 	rm -f ./csvprinter
@@ -38,6 +45,7 @@ install:
 	cp ./csvstr /usr/local/bin/csvstr
 	cp ./csvstrpr /usr/local/bin/csvstrpr
 	cp ./csvprinter /usr/local/bin/csvprinter
+	cp ./rowstrpr /usr/local/bin/rowstrpr
 
 uninstall:
 	rm -f /usr/local/bin/csvfltr
@@ -45,4 +53,4 @@ uninstall:
 	rm -f /usr/local/bin/csvstr
 	rm -f /usr/local/bin/csvstrpr
 	rm -f /usr/local/bin/csvprinter
-
+	rm -f /usr/local/bin/rowstrpr
