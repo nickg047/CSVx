@@ -1,6 +1,16 @@
+/****************************
+ * CSV FILTER               *
+ * File: csvfltr.cpp        *
+ * Author: Nick G           *
+ * E-Mail: nickg047@sdf.org *
+ * Version: 1               *
+ * Status: Stable           *
+ ****************************/
 #include <iostream>
 
 #include "common.h"
+
+#define VERSION 1
 
 using namespace std;
 
@@ -145,6 +155,7 @@ int main(int argc, char** argv){
 }
 
 void printUsage(){
+    cout << "CSV Filter" << endl << "Version " << VERSION << endl << endl;
     cout << "Usage: " << endl;
     cout << "csvfltr -h [HEADERS] -v [VALUES]" << endl << endl;
     cout << "Headers and Values must be entered in respective order and are comma separated\n\n";

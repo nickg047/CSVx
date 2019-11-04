@@ -1,3 +1,11 @@
+/****************************
+ * File: common.h           *
+ * Author: Nick G           *
+ * E-Mail: nickg047@sdf.org *
+ * Version: 1               *
+ * Status: Stable           *
+ ****************************/
+
 #ifndef COMMON_H
 #define COMMON_H
 

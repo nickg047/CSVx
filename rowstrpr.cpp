@@ -1,3 +1,11 @@
+/****************************
+ * Row Strip                *
+ * File: rowstrpr.cpp       *
+ * Author: Nick G           *
+ * E-Mail: nickg047@sdf.org *
+ * Version: 1               *
+ * Status: Stable           *
+ ****************************/
 #include <iostream>
 
 #include "common.h"

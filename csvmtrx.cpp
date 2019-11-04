@@ -1,12 +1,28 @@
+/****************************
+ * CSV Metrics              *
+ * File: csvmtrx.cpp        *
+ * Author: Nick G           *
+ * E-Mail: nickg047@sdf.org *
+ * Version: 1               *
+ * Status: Stable           *
+ ****************************/
 #include <iostream>
 
 #include "common.h"
 
+#define VERSION 1
+
 using namespace std;
 
 pair<string, int>* findvecpair(const string&, vector<pair<string, int>*>*);
+void printUsage();
 
 int main(int argc, char** argv){
+    if(argc > 1){
+        printUsage();
+        return EXIT_CODE;
+    }
+    
     vector<string> headers;
     vector<pair<string, int>*>** metrics = nullptr;
     string cline = EMPTY_STRING;
@@ -104,3 +120,9 @@ pair<string, int>* findvecpair(const string& key, vector<pair<string, int>*>* ve
     return result;
 }
 
+void printUsage(){
+    cout << "CSV Metrics" << endl << "Version " << VERSION << endl << endl;
+    cout << "Usage:" << endl;
+    cout << "> csvmtrx" << endl;
+    cout << endl << "Program will wait for input from stdin" << endl;
+}

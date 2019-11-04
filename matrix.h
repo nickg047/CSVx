@@ -1,3 +1,12 @@
+/*************************************************
+ * File: matrix.h                                *
+ * Description: Basic matrix/grid data structure *
+ *     implemented using using a 2d array        *
+ * Author: Nick G                                *
+ * E-Mail: nickg047@sdf.org                      *
+ * Version: 1                                    *
+ * Status: Stable                                *
+ *************************************************/
 #ifndef MATRIX_H
 #define MATRIX_H
 

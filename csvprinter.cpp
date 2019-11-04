@@ -1,3 +1,11 @@
+/****************************
+ * CSV Printer              *
+ * File: csvprinter.cpp     *
+ * Author: Nick G           *
+ * E-Mail: nickg047@sdf.org *
+ * Version: 1               *
+ * Status: Stable           *
+ ****************************/
 #include <iostream>
 
 #include "common.h"
@@ -7,12 +15,19 @@
 #define PADDING 2
 #define BORDER_CHAR '|'
 #define HEADER_CHAR '*'
+#define VERSION 1
 
 using namespace std;
 
 void char_repeater(const char&, const int&);
+void print_usage();
 
-int main(){
+int main(int argc, char** argv){
+
+    if(argc > 1){
+        print_usage();
+        return EXIT_CODE;
+    }
 
     matrix* mtrx = nullptr;
     string line = EMPTY_STRING;
@@ -111,4 +126,11 @@ void char_repeater(const char& c, const int& num){
     for(int i = 0; i < num; i++){
         cout << c;
     }
+}
+
+void print_usage(){
+    cout << "CSV Printer" << endl << "Version " << VERSION << endl << endl;
+    cout << "Usage:" << endl;
+    cout << "> csvprinter" << endl;
+    cout << endl << "CSV Printer will wait for input from stdin" << endl;
 }
