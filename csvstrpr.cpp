@@ -1,6 +1,16 @@
+/****************************
+ * CSV Strip                *
+ * File: csvstrpr.cpp       *
+ * Author: Nick G           *
+ * E-Mail: nickg047@sdf.org *
+ * Version: 1               *
+ * Status: Stable           *
+ ****************************/
 #include <iostream>
 
 #include "common.h"
+
+#define VERSION 1
 
 using namespace std;
 
@@ -92,7 +102,7 @@ int main(int argc, char** argv){
 }
 
 void printusage(){
-    cout << "CSV Strip" << endl << "Removes columns from csv output" << endl << endl;
+    cout << "CSV Strip" << endl << "Version " << VERSION << endl << "Removes columns from csv output" << endl << endl;
     cout << "Usage: " << endl;
     cout << "csvstrpr [FLAGS] [HEADERS]" << endl << endl;
     cout << "Flags:" << endl;
