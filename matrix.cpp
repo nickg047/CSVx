@@ -1,3 +1,12 @@
+/*************************************************
+ * File: matrix.cpp                              *
+ * Description: Basic matrix/grid data structure *
+ *     implemented using using a 2d array        *
+ * Author: Nick G                                *
+ * E-Mail: nickg047@sdf.org                      *
+ * Version: 1                                    *
+ * Status: Stable                                *
+ *************************************************/
 #include "matrix.h"
 
 void matrix::init(){
