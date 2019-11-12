@@ -3,14 +3,14 @@
  * File: rowstrpr.cpp       *
  * Author: Nick G           *
  * E-Mail: nickg047@sdf.org *
- * Version: 1               *
+ * Version: 2               *
  * Status: Stable           *
  ****************************/
 #include <iostream>
 
 #include "common.h"
 
-#define VERSION 1
+#define VERSION 2
 
 using namespace std;
 
@@ -20,6 +20,7 @@ bool vectorsearch(int, vector<int>*);
 int main(int argc, char** argv){
     string currentline;
     string headercsv = EMPTY_STRING;
+    bool include = false;
 
     // process input args
     for(int i = 1; i < argc; i++){
@@ -27,6 +28,8 @@ int main(int argc, char** argv){
         if(areEqual(arg, "--version") || areEqual(arg, "--help")){
             printusage();
             return EXIT_CODE;
+        } else if (areEqual(arg, "--include")){
+            include = true;
         } else {
             headercsv += arg;
         }
@@ -51,10 +54,16 @@ int main(int argc, char** argv){
     while (getline(cin, currentline)){
         if(vectorsearch(count, ivec)){
             count++;
+            if(include){
+                cout << currentline << endl;
+            }
             continue;
+        } else {
+            if(!include){
+                cout << currentline << endl;
+            }
+            count++;
         }
-        cout << currentline << endl;
-        count++;
     }
 
     delete ivec;
@@ -65,8 +74,9 @@ int main(int argc, char** argv){
 void printusage(){
     cout << "Row Stripper" << endl << "Version " << VERSION << endl << "Removes lines from output" << endl << endl;
     cout << "Usage: " << endl;
-    cout << "rowstrpr [INDEXES]" << endl << endl;
+    cout << "rowstrpr [ARGS] [INDEXES]" << endl << endl;
     cout << "Indexes must be provided as a string of comma separated numbers" << endl;
+    cout << endl << "[ARGS]: \'--include\' to only print the rows specified as [INDEXES]" << endl;
 }
 
 bool vectorsearch(int element, vector<int>* vec){
