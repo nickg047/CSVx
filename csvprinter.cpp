@@ -3,8 +3,8 @@
  * File: csvprinter.cpp     *
  * Author: Nick G           *
  * E-Mail: nickg047@sdf.org *
- * Version: 1               *
- * Status: Stable           *
+ * Version: 1.1             *
+ * Status: BETA             *
  ****************************/
 #include <iostream>
 
@@ -15,7 +15,7 @@
 #define PADDING 2
 #define BORDER_CHAR '|'
 #define HEADER_CHAR '*'
-#define VERSION 1
+#define VERSION 1.1
 
 using namespace std;
 
@@ -36,9 +36,14 @@ int main(int argc, char** argv){
     while(getline(cin, line)){
         // split the line into tokens
         vector<string>* tokens = splitstr(line, ',');
+        if(line.back() == ','){
+            // need to add extra empty string
+            tokens->push_back(EMPTY_STRING);
+        }
 
         // if this is our first run, we need to use this first line to init the mtrx
         if(first){
+            //cerr << "Initializing..." << endl;
             int matrix_width = tokens->size();
             mtrx = new matrix(matrix_width, HEIGHT_BUFFER);
             first = false; // never come back here again
@@ -47,6 +52,7 @@ int main(int argc, char** argv){
             mtrx->increase_height(HEIGHT_BUFFER);
         }
 
+        //cerr << "Storing line into matrix..." << endl;
         // store the line in the matrix
         for(int i = 0; i < mtrx->get_width(); i++){
             mtrx->insert_at(i, line_count, tokens->at(i));
@@ -62,6 +68,7 @@ int main(int argc, char** argv){
     // matrix is now built..
    
     // calculate longest strings for each column
+   // cerr << "Calculating longest string for each column" << endl;
     int* widths = new int[mtrx->get_width()];
     for(int i = 0; i < mtrx->get_width(); i++){
         widths[i] = mtrx->longest_str_in_col(i) + PADDING;
@@ -84,19 +91,26 @@ int main(int argc, char** argv){
     // print body
     bool kill = false;
     bool first_cell = true;
+    //cerr << "Entering outer \'print\' loop.." << endl;
     for(int y = 0; y < mtrx->get_height(); y++){
-        if(kill){
-            break;
-        } else if (first_cell == false) {
+        //if(kill){
+          //  break;
+        /*} else */
+        if (first_cell == false) {
             cout << endl;
         }
         first_cell = true;
+        // cerr << "Entering inner \'print\' loop.." << endl;
+        bool empty_line = true;
         for(int x = 0; x < mtrx->get_width(); x++){
             string current_cell = mtrx->get_cell(x,y);
-            if(current_cell == EMPTY_STRING){
-                kill = true;
-                break;
-            } else if (first_cell){
+            if(current_cell != EMPTY_STRING){
+                empty_line = false;
+                //kill = true;
+                //break;
+            }
+            
+            if (first_cell){
                 cout << BORDER_CHAR; 
                 first_cell = false;
             }
@@ -108,7 +122,12 @@ int main(int argc, char** argv){
             cout << " " << current_cell << " ";
             char_repeater(' ', back_padding);
             cout << BORDER_CHAR;
-        }  
+        }
+        if(empty_line){
+            //kill = true;
+            cout << endl;
+            break;
+        }
     }
     
     // print footer

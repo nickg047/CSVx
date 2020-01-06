@@ -9,3 +9,5 @@ rowstrpr
 old
 
 *.o
+
+.vscode

@@ -45,7 +45,10 @@ void matrix::clear_matrix(){
 
 void matrix::insert_at(const int& x, const int& y, const std::string& data){
     if(x < width && y < height){
+        //std::cerr << "Matrix - data insert bounds check *cleared*" << std::endl;
         root[x][y] = data;
+        //std::cerr << "Matrix - data insertion *successful*" << std::endl;
+
     } else {
         std::cerr << "Unable to insert data at location " << x << ", " << y << std::endl;
         std::cerr << "Location out of bounds" << std::endl;
