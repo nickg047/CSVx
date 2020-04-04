@@ -1,7 +1,7 @@
 # CSVx
 CSV Transformation Tools  
 By Nick G  
-nickg047@sdf.org  
+nickg047@gmail.com  
 
 ## Description
 Tools and utilities for on-the-fly csv transformation, formatting and metric calculations.
@@ -27,7 +27,7 @@ Values can either be string literals or commands such as:
 csvfltr will then listen for input from stdin	
 
 ### CSV METRICS
-Calculates occurance metrics in a CSV matrix	
+Calculates occurance metrics in a CSV matrix. Will display count of occurance per item per column
 
 `csvmtrx`	
 
@@ -52,4 +52,26 @@ Flags:
 
 Headers must be provided as a string of comma separated values	
 
-csvstrpr will then listen for input from stdin	
+csvstrpr will then listen for input from stdin
+
+### CSV ROW/LINE STRIPPER
+Removes rows from csv output
+
+Usage:
+`rowstrpr [FLAGS] [INDEXESu]`
+
+Flags:
+--help    : Prints version and usage info
+--include : Include only the specified rows in output
+
+Indicies must be provided as a string of comma separated values
+
+rowstrpr will then listen for input from stdin
+
+### CSV PRINTER
+Prints csv data in a formatted table
+
+Usage:
+`csvprinter`
+
+csvprinter will then listen for input from stdin
