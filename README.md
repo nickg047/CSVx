@@ -57,12 +57,12 @@ csvstrpr will then listen for input from stdin
 ### CSV ROW/LINE STRIPPER
 Removes rows from csv output
 
-Usage:
+Usage:  
 `rowstrpr [FLAGS] [INDEXESu]`
 
-Flags:
---help    : Prints version and usage info
---include : Include only the specified rows in output
+Flags:  
+--help    : Prints version and usage info   
+--include : Include only the specified rows in output   
 
 Indicies must be provided as a string of comma separated values
 
@@ -71,7 +71,7 @@ rowstrpr will then listen for input from stdin
 ### CSV PRINTER
 Prints csv data in a formatted table
 
-Usage:
+Usage:  
 `csvprinter`
 
 csvprinter will then listen for input from stdin
