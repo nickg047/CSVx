@@ -1,10 +1,10 @@
-/****************************
- * File: common.cpp         *
- * Author: Nick G           *
- * E-Mail: nickg047@sdf.org *
- * Version: 1               *
- * Status: Stable           *
- ****************************/
+/******************************
+ * File: common.cpp           *
+ * Author: Nick G             *
+ * E-Mail: nickg047@gmail.com *
+ * Version: 1                 *
+ * Status: Stable             *
+ ******************************/
 #include "common.h"
 
 std::vector<std::string>* splitstr(const std::string& line, const char& delim){
