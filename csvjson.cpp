@@ -16,8 +16,8 @@ using namespace std;
 
 void print_usage();
 
-int main(int argc, char** argv){
-
+int main(int argc, char** argv) {
+    
     if(argc > 1){
         print_usage();
         return EXIT_CODE;
@@ -28,7 +28,8 @@ int main(int argc, char** argv){
     string currentline = EMPTY_STRING;
     vector<string>* headers = nullptr;
     bool first = true;
-
+    bool first_obj = true;
+    cout << '[';
     while(getline(cin, currentline)){
 	vector<string>* tokens = splitstr(currentline, ',');
 	if(first){
@@ -37,12 +38,23 @@ int main(int argc, char** argv){
 	    continue;
 	}
 
+	cout << (first_obj ? "" : ",") << '{';
+	first_obj = false;
+	bool obj_first = true;
+	for(int i = 0; i < tokens->size(); i++){
+	    cout << (obj_first ? "" : ",") 
+		    << '\"' << headers->at(i) << "\" : \"" << tokens->at(i) << '\"';
+	    obj_first = false;
+	}
 
+	cout << '}';
 	
 	// cleanup (not headers)
 	delete tokens;
 	tokens = nullptr;
     }
+
+    cout << ']' << endl;
 
     delete headers;
     headers = nullptr;

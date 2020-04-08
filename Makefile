@@ -22,7 +22,7 @@ csvprinter: csvprinter.cpp common.o matrix.o
 	$(CC) $(CFLAGS) -o csvprinter common.o matrix.o csvprinter.cpp
 
 csvjson: csvjson.cpp common.o
-	$(CC) $(CFLAGS) -o csvjson common.o
+	$(CC) $(CFLAGS) -o csvjson common.o csvjson.cpp
 
 matrix.o: matrix.cpp
 	$(CC) $(CFLAGS) -c matrix.cpp
