@@ -75,3 +75,15 @@ Usage:
 `csvprinter`
 
 csvprinter will then listen for input from stdin
+
+### CSV to JSON
+Converts a csv file into a JSON array
+
+Usage:
+`csvjson`
+
+csvjson will then listen for csv input from stdin
+
+You might notice that the output is not beautified.. I'm sure I will get around to adding that in later but in the meantime I recommend piping output into 
+`python -m json.tool`
+

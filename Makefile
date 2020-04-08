@@ -21,13 +21,16 @@ rowstrpr: rowstrpr.cpp common.o
 csvprinter: csvprinter.cpp common.o matrix.o
 	$(CC) $(CFLAGS) -o csvprinter common.o matrix.o csvprinter.cpp
 
+csvjson: csvjson.cpp common.o
+	$(CC) $(CFLAGS) -o csvjson common.o csvjson.cpp
+
 matrix.o: matrix.cpp
 	$(CC) $(CFLAGS) -c matrix.cpp
 
 common.o: common.cpp
 	$(CC) $(CFLAGS) -c common.cpp
 
-build: csvfltr csvmtrx csvstr csvstrpr csvprinter rowstrpr
+build: csvfltr csvmtrx csvstr csvstrpr csvprinter rowstrpr csvjson
 
 clean:
 	rm -f ./csvfltr
@@ -38,6 +41,7 @@ clean:
 	rm -f ./common.o
 	rm -f ./matrix.o
 	rm -f ./csvprinter
+	rm -f ./csvjson
 
 install:
 	cp ./csvfltr /usr/local/bin/csvfltr
@@ -46,6 +50,7 @@ install:
 	cp ./csvstrpr /usr/local/bin/csvstrpr
 	cp ./csvprinter /usr/local/bin/csvprinter
 	cp ./rowstrpr /usr/local/bin/rowstrpr
+	cp ./csvjson /usr/local/bin/csvjson
 
 uninstall:
 	rm -f /usr/local/bin/csvfltr
@@ -54,3 +59,4 @@ uninstall:
 	rm -f /usr/local/bin/csvstrpr
 	rm -f /usr/local/bin/csvprinter
 	rm -f /usr/local/bin/rowstrpr
+	rm -f /usr/local/bin/csvjson
