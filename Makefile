@@ -30,7 +30,7 @@ matrix.o: matrix.cpp
 common.o: common.cpp
 	$(CC) $(CFLAGS) -c common.cpp
 
-build: csvfltr csvmtrx csvstr csvstrpr csvprinter rowstrpr
+build: csvfltr csvmtrx csvstr csvstrpr csvprinter rowstrpr csvjson
 
 clean:
 	rm -f ./csvfltr
