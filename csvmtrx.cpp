@@ -1,11 +1,11 @@
-/****************************
- * CSV Metrics              *
- * File: csvmtrx.cpp        *
- * Author: Nick G           *
- * E-Mail: nickg047@sdf.org *
- * Version: 1               *
- * Status: Stable           *
- ****************************/
+/******************************
+ * CSV Metrics                *
+ * File: csvmtrx.cpp          *
+ * Author: Nick G             *
+ * E-Mail: nickg047@gmail.com *
+ * Version: 1                 *
+ * Status: Stable             * 
+ ******************************/
 #include <iostream>
 
 #include "common.h"

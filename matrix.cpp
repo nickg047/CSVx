@@ -3,7 +3,7 @@
  * Description: Basic matrix/grid data structure *
  *     implemented using using a 2d array        *
  * Author: Nick G                                *
- * E-Mail: nickg047@sdf.org                      *
+ * E-Mail: nickg047@gmail.com                    *
  * Version: 1                                    *
  * Status: Stable                                *
  *************************************************/

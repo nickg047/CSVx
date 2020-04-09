@@ -1,11 +1,11 @@
-/****************************
- * CSV Printer              *
- * File: csvprinter.cpp     *
- * Author: Nick G           *
- * E-Mail: nickg047@sdf.org *
- * Version: 1.1             *
- * Status: BETA             *
- ****************************/
+/******************************
+ * CSV Printer                *
+ * File: csvprinter.cpp       *
+ * Author: Nick G             *
+ * E-Mail: nickg047@gmail.com *
+ * Version: 1.1               *
+ * Status: BETA               *
+ ******************************/
 #include <iostream>
 
 #include "common.h"
