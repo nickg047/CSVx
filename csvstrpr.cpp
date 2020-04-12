@@ -3,14 +3,14 @@
  * File: csvstrpr.cpp         *
  * Author: Nick G             *
  * E-Mail: nickg047@gmail.com *
- * Version: 1                 *
+ * Version: 1.01              *
  * Status: Stable             *
  ******************************/
 #include <iostream>
 
 #include "common.h"
 
-#define VERSION 1
+#define VERSION 1.01
 
 using namespace std;
 
@@ -29,7 +29,10 @@ int main(int argc, char** argv){
             indexflag = true;
         } else if (areEqual(arg, "--include")){
             includelogic = true;
-        } else {
+        } else if (areEqual(arg, "--help")){
+	    printusage();
+	    return 0;
+	}else {
             headercsv += arg;
         }
     }
