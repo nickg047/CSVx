@@ -1,6 +1,8 @@
 CC = g++
 CFLAGS = -std=c++11
 
+all: build
+
 default: build
 
 csvfltr: csvfltr.cpp common.o
@@ -42,6 +44,10 @@ clean:
 	rm -f ./matrix.o
 	rm -f ./csvprinter
 	rm -f ./csvjson
+
+fresh:
+	make clean
+	make build
 
 install:
 	cp ./csvfltr /usr/local/bin/csvfltr
